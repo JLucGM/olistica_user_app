@@ -9,6 +9,7 @@ import '../../../repositories/category_repository.dart';
 import '../../../repositories/e_service_repository.dart';
 import '../../../repositories/slider_repository.dart';
 import '../../../services/settings_service.dart';
+import '../../category/controllers/categories_controller.dart';
 import '../../root/controllers/root_controller.dart';
 
 class HomeController extends GetxController {
@@ -23,6 +24,8 @@ class HomeController extends GetxController {
   final eServices = <EService>[].obs;
   final categories = <Category>[].obs;
   final featured = <Category>[].obs;
+
+  // final layout = CategoriesLayout.LIST.obs;
 
   HomeController() {
     _sliderRepo = new SliderRepository();
@@ -43,7 +46,8 @@ class HomeController extends GetxController {
     await getRecommendedEServices();
     Get.find<RootController>().getNotificationsCount();
     if (showMessage) {
-      Get.showSnackbar(Ui.SuccessSnackBar(message: "Home page refreshed successfully".tr));
+      Get.showSnackbar(
+          Ui.SuccessSnackBar(message: "Home page refreshed successfully".tr));
     }
   }
 
